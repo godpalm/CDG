@@ -3,7 +3,7 @@ import { ref } from "vue";
 const drawer = ref(false);
 const menuItems = [
   { title: "Home", icon: "mdi-home", to: "/" },
-  { title: "Book", icon: "mdi-phone", to: "/d" },
+  { title: "Book", icon: "mdi-phone", to: "/login" },
   { title: "Purchase", icon: "mdi-cart", to: "/sd" },
 ];
 </script>
