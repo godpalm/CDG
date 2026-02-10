@@ -1,0 +1,14 @@
+services:
+  mariadb:
+    image: mariadb:latest
+    container_name: palm-mariadb
+    restart: always
+    environment:
+      MARIADB_ROOT_PASSWORD: rootpassword
+      MARIADB_DATABASE: mydb
+      MARIADB_USER: palmuser
+      MARIADB_PASSWORD: palmpassword
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./db_data:/var/lib/mysql
