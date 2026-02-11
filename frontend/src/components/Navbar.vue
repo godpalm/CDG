@@ -4,7 +4,7 @@ const drawer = ref(false);
 const menuItems = [
   { title: "Home", icon: "mdi-home", to: "/" },
   { title: "Book", icon: "mdi-phone", to: "/login" },
-  { title: "Purchase", icon: "mdi-cart", to: "/sd" },
+  { title: "Register", icon: "mdi-cart", to: "/register" },
 ];
 </script>
 

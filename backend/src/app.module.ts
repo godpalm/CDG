@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { User } from './user.entity';
+import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
@@ -14,9 +14,9 @@ import { User } from './user.entity';
       password: 'palmpassword', // ใช้ MARIADB_PASSWORD ที่คุณตั้งไว้
       database: 'mydb',       // ใช้ MARIADB_DATABASE
       autoLoadEntities: true, 
-      entities: [User],
       synchronize: true,      // สั่งให้สร้างตารางอัตโนมัติ (เฉพาะช่วงพัฒนา)
     }),
+    UsersModule,
   ],
   controllers: [AppController],
   providers: [AppService],
