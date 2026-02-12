@@ -1,6 +1,5 @@
 import { registerPlugins } from "@/plugins";
 import App from "./App.vue";
-//import Route from "./router";
 import { createApp } from "vue";
 import "unfonts.css";
 

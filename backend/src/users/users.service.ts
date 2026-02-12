@@ -23,8 +23,10 @@ export class UsersService {
   return await this.usersRepository.save(newUser);
 }
 
-  findAll() {
-    return `This action returns all users`;
+  async findAll(): Promise<User[]> {
+    return await this.usersRepository.find({
+      select: ['id', 'name', 'email', 'phone'],
+    });
   }
 
   findOne(id: number) {

@@ -5,7 +5,11 @@ import Register from "../pages/Register.vue";
 
 const routes = [
   {
-    path: "/",
+    path: "/",           
+    redirect: "/home",   
+  },
+  {
+    path: "/home",
     component: Home,
     meta: { requiresAuth: true },
   },
@@ -13,7 +17,8 @@ const routes = [
     path: "/login",
     component: Login,
   },
-  { path: "/register",
+  { 
+    path: "/register",
     component: Register,
   },
 ];
@@ -21,20 +26,6 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(),
   routes,
-});
-
-router.beforeEach((to, from, next) => {
-  const isAuthenticated = localStorage.getItem("isLoggedIn") === "true";
-
-  if (to.meta.requiresAuth) {
-    if (!isAuthenticated) {
-      next("/login");
-    } else {
-      next();
-    }
-  } else {
-    next();
-  }
 });
 
 export default router;
