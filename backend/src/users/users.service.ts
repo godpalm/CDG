@@ -13,15 +13,15 @@ export class UsersService {
   ) {}
 
   async create(createUserDto: CreateUserDto) {
-  const existingUser = await this.usersRepository.findOne({ 
-    where: { email: createUserDto.email } 
-  });
-  if (existingUser) {
-    throw new BadRequestException('Email นี้ถูกใช้งานไปแล้ว');
+    const existingUser = await this.usersRepository.findOne({
+      where: { email: createUserDto.email },
+    });
+    if (existingUser) {
+      throw new BadRequestException('Email นี้ถูกใช้งานไปแล้ว');
+    }
+    const newUser = this.usersRepository.create(createUserDto);
+    return await this.usersRepository.save(newUser);
   }
-  const newUser = this.usersRepository.create(createUserDto);
-  return await this.usersRepository.save(newUser);
-}
 
   async findAll(): Promise<User[]> {
     return await this.usersRepository.find({
@@ -37,7 +37,11 @@ export class UsersService {
     return `This action updates a #${id} user`;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} user`;
+  async remove(id: number): Promise<void> {
+    const user = await this.usersRepository.findOne({ where: { id: id } });
+    if (!user) {
+      throw new BadRequestException('ไม่พบผู้ใช้งานนี้');
+    }
+    await this.usersRepository.remove(user);
   }
 }

@@ -9,10 +9,10 @@ function handleLogin() {
 </script>
 
 <template>
-  <v-container class="fill-height">
-    <v-row justify="center">
+  <v-container fluid class="fill-height" style="min-height: 100vh;">
+    <v-row align="center" justify="center">
       <v-col cols="12" sm="8" md="4">
-        <v-card width="400" class="mx-auto pa-4">
+        <v-card width="400" class="mx-auto pa-4" elevation="10">
           <v-card-title class="text-center text-h5"> เข้าสู่ระบบ </v-card-title>
           <v-card-text>
             <v-form>

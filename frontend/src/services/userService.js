@@ -10,5 +10,9 @@ export const userService = {
   
   getAll() {
     return axios.get(API_URL);
-  }
+  },
+
+  deleteUser(userId) {
+    return axios.delete(`${API_URL}/${userId}`);
+  },
 };

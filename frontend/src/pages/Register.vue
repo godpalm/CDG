@@ -11,8 +11,7 @@ const user = ref({
   phone: ''
 });
 
-// --- เพิ่มส่วนนี้: กฎการตรวจสอบ ---
-const form = ref(null); // ไว้ใช้อ้างอิงตัว v-form
+const form = ref(null); 
 const nameRules = [
   v => !!v || 'กรุณากรอกชื่อ-นามสกุล',
   v => (v && v.length >= 3) || 'ชื่อต้องมีความยาวอย่างน้อย 3 ตัวอักษร'
@@ -20,7 +19,7 @@ const nameRules = [
 
 const emailRules = [
   v => !!v || 'กรุณากรอกอีเมล',
-  v => /.+@.+\..+/.test(v) || 'รูปแบบอีเมลไม่ถูกต้อง' // เช็กว่ามี @ และ .
+  v => /.+@.+\..+/.test(v) || 'รูปแบบอีเมลไม่ถูกต้อง' 
 ];
 
 const passwordRules = [
@@ -32,13 +31,10 @@ const phoneRules = [
   v => !v || /^[0-9]+$/.test(v) || 'เบอร์โทรศัพท์ต้องเป็นตัวเลขเท่านั้น',
   v => !v || (v && v.length >= 9) || 'เบอร์โทรศัพท์ไม่ถูกต้อง'
 ];
-// ----------------------------
 
 const registerUser = async () => {
-
   const { valid } = await form.value.validate();
   if (!valid) return;
-
   try {
     const response = await userService.register(user.value);
     alert('ลงทะเบียนสำเร็จ! ID: ' + response.data.id);
