@@ -19,7 +19,7 @@ const user = ref({
 });
 
 const nameRules = [v.required("ชื่อห้ามว่าง"), v.minLength(3)];
-const emailRules = [v.required(), v.email()];
+const emailRules = v.email;
 const phoneRules = [v.numeric(), v.phone()];
 
 const updateUser = async () => {

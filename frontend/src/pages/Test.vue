@@ -54,6 +54,7 @@ onMounted(() => {
 <template>
   <DefaultLayout>
     <v-container>
+      <BackButton></BackButton>
       <UserTable 
         :userData="users" 
         :isLoading="false" 

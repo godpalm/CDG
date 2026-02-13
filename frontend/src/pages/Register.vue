@@ -4,6 +4,9 @@ import { userService } from '@/services/userService';
 import BackButton from '@/components/BackButton.vue';
 import DefaultLayout from '@/layouts/defaultLayout.vue';
 import { validations as v } from "@/utils/validations";
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
 
 const user = ref({
   name: '',
@@ -15,8 +18,8 @@ const user = ref({
 const form = ref(null); 
 
 const nameRules = [v.required("ชื่อห้ามว่าง"), v.minLength(3)];
-const emailRules = [v.required(), v.email()];
-const passwordRules = [v.minLength(8, "ถ้าจะเปลี่ยน รหัสต้อง 8 ตัวขึ้นไปนะ")];
+const emailRules = v.email;
+const passwordRules = [v.minLength(8, "ถ้าจะเปลี่ยน รหัสต้อง 8 ตัวขึ้นไป")];
 const phoneRules = [v.numeric(), v.phone()];
 
 const registerUser = async () => {
@@ -27,6 +30,8 @@ const registerUser = async () => {
     alert('ลงทะเบียนสำเร็จ! ID: ' + response.data.id);
     user.value = { name: '', email: '', password: '', phone: '' };
     form.value.resetValidation(); 
+    router.push('/home');
+
   } catch (error) {
     console.error('เกิดข้อผิดพลาด:', error);
     alert(error.response?.data?.message || 'เชื่อมต่อเซิร์ฟเวอร์ไม่ได้');
