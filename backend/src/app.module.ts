@@ -3,6 +3,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UsersModule } from './users/users.module';
+import { MarketsModule } from './markets/markets.module';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { UsersModule } from './users/users.module';
       synchronize: true,      // สั่งให้สร้างตารางอัตโนมัติ (เฉพาะช่วงพัฒนา)
     }),
     UsersModule,
+    MarketsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

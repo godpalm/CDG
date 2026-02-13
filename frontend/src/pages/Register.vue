@@ -3,6 +3,7 @@ import { ref } from 'vue';
 import { userService } from '@/services/userService';
 import BackButton from '@/components/BackButton.vue';
 import DefaultLayout from '@/layouts/defaultLayout.vue';
+import { validations as v } from "@/utils/validations";
 
 const user = ref({
   name: '',
@@ -12,25 +13,11 @@ const user = ref({
 });
 
 const form = ref(null); 
-const nameRules = [
-  v => !!v || 'กรุณากรอกชื่อ-นามสกุล',
-  v => (v && v.length >= 3) || 'ชื่อต้องมีความยาวอย่างน้อย 3 ตัวอักษร'
-];
 
-const emailRules = [
-  v => !!v || 'กรุณากรอกอีเมล',
-  v => /.+@.+\..+/.test(v) || 'รูปแบบอีเมลไม่ถูกต้อง' 
-];
-
-const passwordRules = [
-  v => !!v || 'กรุณากรอกรหัสผ่าน',
-  v => (v && v.length >= 8) || 'รหัสผ่านต้องมีอย่างน้อย 8 ตัวอักษร'
-];
-
-const phoneRules = [
-  v => !v || /^[0-9]+$/.test(v) || 'เบอร์โทรศัพท์ต้องเป็นตัวเลขเท่านั้น',
-  v => !v || (v && v.length >= 9) || 'เบอร์โทรศัพท์ไม่ถูกต้อง'
-];
+const nameRules = [v.required("ชื่อห้ามว่าง"), v.minLength(3)];
+const emailRules = [v.required(), v.email()];
+const passwordRules = [v.minLength(8, "ถ้าจะเปลี่ยน รหัสต้อง 8 ตัวขึ้นไปนะ")];
+const phoneRules = [v.numeric(), v.phone()];
 
 const registerUser = async () => {
   const { valid } = await form.value.validate();
@@ -45,6 +32,7 @@ const registerUser = async () => {
     alert(error.response?.data?.message || 'เชื่อมต่อเซิร์ฟเวอร์ไม่ได้');
   }
 };
+
 </script>
 
 <template>

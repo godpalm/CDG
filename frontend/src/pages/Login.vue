@@ -2,7 +2,7 @@
 import { useRouter } from "vue-router";
 const router = useRouter();
 
-function handleLogin() {
+const handleLogin = () => {
   sessionStorage.setItem("isLoggedIn", "true");
   router.push("/home");
 }

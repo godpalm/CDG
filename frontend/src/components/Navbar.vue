@@ -55,7 +55,6 @@ const phoneRules = [
   v => !v || /^[0-9]+$/.test(v) || 'เบอร์โทรศัพท์ต้องเป็นตัวเลขเท่านั้น',
   v => !v || (v && v.length >= 9) || 'เบอร์โทรศัพท์ไม่ถูกต้อง'
 ];
-
 </script>
 
 <template>
@@ -123,7 +122,7 @@ const phoneRules = [
 
   <v-app-bar color="white" density="compact" elevation="1" absolute style="top: 64px;">
     <v-tabs color="primary" align-tabs="start" fixed-tabs>
-      <v-tab to="/home">Dashboard</v-tab>
+      <v-tab to="/home">Home</v-tab>
       <v-tab to="/register">Registering</v-tab>
       <v-tab to="/login">Login</v-tab>
       <v-tab to="/test">Test</v-tab>

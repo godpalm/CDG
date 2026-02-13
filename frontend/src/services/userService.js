@@ -15,4 +15,12 @@ export const userService = {
   deleteUser(userId) {
     return axios.delete(`${API_URL}/${userId}`);
   },
+
+  editUser(userId, userData) {
+    return axios.patch(`${API_URL}/${userId}`, userData);
+  },
+
+  getById(userId) {
+    return axios.get(`${API_URL}/${userId}`);
+  }
 };

@@ -29,14 +29,22 @@ export class UsersService {
     });
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} user`;
+  async findOne(id: number): Promise<User> {
+    const user = await this.usersRepository.findOne ({ where:{ id }});
+    if (!user) {
+      throw new BadRequestException('ไม่พบผู้ใช้งานนี้');
+    }
+    return user;
   }
 
-  update(id: number, updateUserDto: UpdateUserDto) {
-    return `This action updates a #${id} user`;
-  }
+  async update(id: number, updateUserDto: UpdateUserDto): Promise<User> {
+    const user = await this.findOne(id);
+    
+    const updateUser = Object.assign(user, updateUserDto)
 
+    return  await this.usersRepository.save(updateUser)
+
+  }
   async remove(id: number): Promise<void> {
     const user = await this.usersRepository.findOne({ where: { id: id } });
     if (!user) {
