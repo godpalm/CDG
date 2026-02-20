@@ -55,12 +55,12 @@ onMounted(() => {
   <DefaultLayout>
     <v-container>
       <BackButton></BackButton>
-      <UserTable 
-        :userData="users" 
-        :isLoading="false" 
-        show-manage 
-        @edit="editUser" 
-        @delete="openDialog" 
+      <UserTable
+        :userData="users"
+        :isLoading="false"
+        show-manage
+        @edit="editUser"
+        @delete="openDialog"
       />
 
       <v-dialog v-model="dialog" max-width="400">
@@ -71,8 +71,12 @@ onMounted(() => {
           </v-card-text>
           <v-card-actions>
             <v-spacer></v-spacer>
-            <v-btn color="grey" variant="text" @click="dialog = false">ยกเลิก</v-btn>
-            <v-btn color="red" variant="elevated" @click="deleteUser">ยืนยันการลบ</v-btn>
+            <v-btn color="grey" variant="text" @click="dialog = false"
+              >ยกเลิก</v-btn
+            >
+            <v-btn color="red" variant="elevated" @click="deleteUser"
+              >ยืนยันการลบ</v-btn
+            >
           </v-card-actions>
         </v-card>
       </v-dialog>

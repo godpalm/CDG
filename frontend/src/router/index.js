@@ -4,6 +4,7 @@ import Login from "../pages/Login.vue";
 import Register from "../pages/Register.vue";
 import Test from "../pages/Test.vue";
 import Edit from "../pages/EditUser.vue";
+import PDF from "../pages/PDFmaker.vue";
 
 const routes = [
   {
@@ -35,6 +36,11 @@ const routes = [
     path: "/edit/:id",
     name: 'EditUser',
     component: Edit,
+  },
+  {
+    path: "/pdf",
+    name: 'PDF',
+    component: PDF,
   }
 ];
 

@@ -7,8 +7,22 @@ const router = useRouter();
 const drawerLeft = ref(false);  
 const drawerRight = ref(false); 
 const form = ref(null);
+const dataLogin = ref({ email: "", password: "" })
 
-const authMode = ref('login');
+const authMode = ref('');
+
+const handleLoginDrawer = async () => {
+  const { valid } = await form.value.validate();
+  if (!valid) return;
+
+  try{
+  const response = await userService.login(dataLogin.value);
+  localStorage.setItem('token', response.data.access_token);
+  }
+  catch(error){
+    console.log(error);
+  }
+};
 
 const openLoginDrawer = () => {
   authMode.value = 'login';
@@ -73,12 +87,12 @@ const phoneRules = [
         <h2 class="text-h5 font-weight-bold">เข้าสู่ระบบ</h2>
         <v-btn icon="mdi-close" variant="text" @click="drawerRight = false"></v-btn>
       </div>
-      
-      <v-text-field label="อีเมล" variant="outlined" class="mb-2" density="comfortable"></v-text-field>
-      <v-text-field label="รหัสผ่าน" type="password" variant="outlined" density="comfortable"></v-text-field>
-      
-      <v-btn color="black" block size="large" class="mt-4">Login</v-btn>
-      
+      <v-form ref="form" @submit.prevent="handleLoginDrawer">
+      <v-text-field v-model="dataLogin.email" label="อีเมล" variant="outlined" class="mb-2" density="comfortable"></v-text-field>
+      <v-text-field v-model="dataLogin.password" label="รหัสผ่าน" type="password" variant="outlined" density="comfortable"></v-text-field>
+      <v-btn color="black" block size="large" class="mt-4" type="submit">Login</v-btn>
+      </v-form>
+
       <p class="text-center mt-6 text-body-2">
         ยังไม่มีบัญชีใช่ไหม? 
         <span class="text-primary cursor-pointer font-weight-bold" @click="authMode = 'register'">สมัครสมาชิก</span>
@@ -126,6 +140,7 @@ const phoneRules = [
       <v-tab to="/register">Registering</v-tab>
       <v-tab to="/login">Login</v-tab>
       <v-tab to="/test">Test</v-tab>
+      <v-tab to="/pdf">PDF Maker</v-tab>
     </v-tabs>
   </v-app-bar>
 </template>

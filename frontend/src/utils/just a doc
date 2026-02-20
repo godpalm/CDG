@@ -1,0 +1,254 @@
+const pdfForm = ref({
+
+project: "โครงการเยาวชนแถวหน้า ครั้งที่ 12",
+projectInfo: "ผลการเรียนดีเด่น และผลงานคลิปสั้น",
+topic: 'หัวข้อ "พัฒนาอย่างก้าวกระโดด ด้วย Ai เพื่อพัฒนาชีวิตอย่างยั่งยืนในอนาคต"',
+date: "",
+decade: "",
+
+prefix: "นาย",
+name: "ชยพัทร์",
+lastname: "เครือสุคนธ์",
+idCard: "1103000178632",
+birthDay: "13/10/2546",
+age: "22",
+gpa: "3.10",
+class: "ม.4",
+school: "รร.สตรีวิทยา",
+addressId1: "125/14",
+group1: "-",
+alley1: "ตรอก 13 ทดสอบ",
+road1: "นราธิวาส 30",
+district1: "ยานนาวา",
+subDistrict1: "ช่องนนทรี",
+province1: "กรุงเทพมหานคร",
+postal1: "10121",
+
+addressId2: "125/14",
+group2: "-",
+alley2: "ตรอก 13 ทดสอบ",
+road2: "นราธิวาส 30",
+district2: "ยานนาวา",
+subDistrict2: "ช่องนนทรี",
+province2: "กรุงเทพมหานคร ",
+postal2: "10121",
+
+prefixParent: "นางสาว",
+nameParent: "ทดสอบ",
+lastNameParent: "ใจใจดี",
+idCardParent: "1130000178632",
+position: "ผู้ใหญ่บ้าน",
+workYear: "1",
+workMonth: "5",
+phoneNumber: "0652222222",
+phoneWork: "042042042",
+affiliation: "สังกัดทดสอบ",
+districtParent: "ช่องนนทรี",
+provinceParent: "กรุงเทพมหานคร",
+postalParent: "10121",
+
+typeProject: "ผลการเรียนดีเด่น",
+gpax: "4.00",
+
+});
+
+
+
+      {
+        margin: [0,0,0,0],
+        table: {
+          widths: ['*', '*', '*', '*'],
+          body: [
+            [//project
+              { text: pdfForm.value.project, colSpan: 4, style: 'primary' },
+              {},
+              {},
+              {},
+            ],
+            [//project info
+              { text: pdfForm.value.projectInfo, colSpan: 4, style: 'primary' },
+              {},
+              {},
+              {},
+            ],
+            [//topic
+              { text: pdfForm.value.topic, colSpan: 4, style: 'primary',lineHeight: 1.8 },
+              {},
+              {},
+              {},
+            ],
+            [//date
+              { text: [`วันที่ `,{ text: `${thaiDate.day} `, bold: true },{ text: `${thaiDate.month}`, bold: true }, ` พ.ศ. `,{ text: `${thaiDate.year}`, bold: true }], colSpan: 4, lineHeight: 1.8, alignment: 'right' },
+              {},
+              {},
+              {},
+            ],
+            [//First
+              { text: [`ชื่อ-นามสกุล  `,{ text: `${fullPatientName}`, bold: true }], colSpan: 2, margin: [44,0,0,0] },
+              {},
+              { text: [`เลขประจำตัวประชาชน `,{ text: `${pdfForm.value.idCard}`, bold: true }], colSpan: 2, margin: [24,0,0,0] },
+              {},
+            ],
+            [//2
+              { text: [`วัน/เดือน/ปี พ.ศ. เกิด  `,{ text: `${pdfForm.value.birthDay}`, bold: true }], colSpan: 2 },
+              {},
+              { text: [`อายุ `,{ text: `${pdfForm.value.age} `, bold: true }, { text: `ปี (นับตาม พ.ศ. เกิด)`}], colSpan: 2, margin: [24,0,0,0] },
+              {},
+            ],
+            [//3
+              { text: [`เกรดผลการเรียน `,{ text: `${pdfForm.value.gpa}`, bold: true },`     ระดับชั้นที่เรียน `,{ text: `${pdfForm.value.class}`, bold: true }, `    ชื่อสถาบันการศึกษา `,{ text: `${pdfForm.value.school}`, bold: true }], colSpan: 4 },
+              {},
+              {},
+              {},
+            ],
+            [//4
+              { text: `ที่อยู่ตามภูมิลำเนาของผู้สมัครรับทุน`, margin: [44,0,0,0], colSpan: 2 },
+              {},
+              {text: [`บ้านเลขที่        `,{ text: `${pdfForm.value.addressId1}`, bold: true , alignment: 'right'}]},
+              {text: [`หมู่ที่ `,{ text: `${pdfForm.value.group1}`, bold: true }], alignment: 'center'},
+            ],
+            [//5
+              { text: [`ตรอก/ซอย         `,{ text: `${pdfForm.value.alley1}`, bold: true }] , colSpan: 2 },
+              {},
+              { text: [`ถนน      `,{ text: `${pdfForm.value.road1}`, bold: true }] , colSpan: 2 },
+              {},
+            ],
+            [// 6
+              {
+              colSpan: 4,
+              columns: [  { text: [`ตำบล/แขวง `, { text: `${pdfForm.value.subDistrict1}`, bold: true }], width: '*' },
+                          { text: [`อำเภอ/เขต `, { text: `${pdfForm.value.district1}`, bold: true }], width: 120 },
+                          { text: [`จังหวัด `, { text: `${pdfForm.value.province1}`, bold: true }], width: 120 },
+                          { text: `${pdfForm.value.postal1}`, bold: true, width: 40 }
+                      ]   
+              },
+              {}, {}, {},
+            ],
+            [//7
+              { text: [`ที่อยู่สำหรับจัดส่งเอกสารของผู้สมัครผู้รับทุน `,{text: [ { text: `บ้านเลขที่ `}, { text: `${pdfForm.value.addressId2}`, bold: true, alignment: 'right' } ]}], colSpan: 3, margin: [44,0,0,0]},
+              {},
+              {},
+              { text: [`หมู่ที่ `,{ text: `${pdfForm.value.group2}`, bold: true }], alignment: 'center' },
+            ],
+            [//8
+              { text: [`ตรอก/ซอย         `,{ text: `${pdfForm.value.alley2}`, bold: true }] , colSpan: 2},
+              {},
+              { text: [`ถนน      `,{ text: `${pdfForm.value.road2}`, bold: true }] , colSpan: 2},
+              {},
+            ],
+            [// 6
+              {
+              colSpan: 4,
+              columns: [  { text: [`ตำบล/แขวง `, { text: `${pdfForm.value.subDistrict2}`, bold: true }], width: '*' },
+                          { text: [`อำเภอ/เขต `, { text: `${pdfForm.value.district2}`, bold: true }], width: 120 },
+                          { text: [`จังหวัด `, { text: `${pdfForm.value.province2}`, bold: true }], width: 120 },
+                          { text: `${pdfForm.value.postal2}`, bold: true, width: 40 }
+                      ]   
+              },
+              {}, {}, {},
+            ],
+            [//10-12
+              { text: `ข้อมูลของบิดาหรือมารดา (บุคลากรประเภทข้าราชการ ลูกจ้างประจำ พนักงานราชการ สมาชิกกองอาสารักษาดินแดน กำนัน ผู้ใหญ่บ้าน และลูกจ้างเหมาบริการ ที่ปฏิบัติงานติดต่อกันมาแล้วไม่น้อยกว่า 1 ปี นับถึงวันปิดรับสมัครของกรมการปกครอง)`, colSpan: 4, leadingIndent: 44 },
+              {},
+              {},
+              {},
+            ],
+            [//13
+              { text: [`ชื่อ-สกุล  `,{ text: `${fullParentName}`, bold: true }], colSpan: 2},
+              {},
+              { text: [`เลขประจำตัวประชาชน `,{ text: `${pdfForm.value.idCardParent}`, bold: true }], colSpan: 2},
+              {},
+            ],
+            [//14
+              { text: `ปัจจุบันดำรงตำแหน่ง `},
+              { text: `${pdfForm.value.position}`, bold: true },
+              { text: `ระยะเวลาปฏิบัติงาน `},
+              { text: [{text: `${pdfForm.value.workYear}`, bold: true },{ text: ` ปี `},{ text: `${pdfForm.value.workMonth}`, bold: true },{ text: ` เดือน` }] },
+            ],
+            [//15
+              { text: `โทรศัพท์มือถือ (ส่วนตัว) `},
+              { text: `${pdfForm.value.phoneNumber}`, bold: true },
+              { text: `โทรศัพท์ (ที่ทำงาน) `,  margin: [24,0,0,0]},
+              { text: `${pdfForm.value.phoneWork}`, bold: true, alignment: 'center' },
+            ],
+            [// 16
+              {
+              colSpan: 4,
+              columns: [  { text: [`สังกัด `, { text: `${pdfForm.value.affiliation}`, bold: true }], width: '*' },
+                          { text: [`อำเภอ/เขต `, { text: `${pdfForm.value.districtParent}`, bold: true }], width: 120 },
+                          { text: [`จังหวัด `, { text: `${pdfForm.value.provinceParent}`, bold: true }], width: 120 },
+                          { text: `${pdfForm.value.postalParent}`, bold: true, width: 40 }
+                      ]   
+              },
+              {}, {}, {},
+            ],
+            [//Last
+              { text: [`ประสงค์สมัครและส่งผลงานประกวดประเภท `,{ text: `${pdfForm.value.typeProject}`, bold: true }, ` เกรดเฉลี่ยสะสม `,{ text: `${pdfForm.value.gpax}`, bold: true }], colSpan: 4, lineHeight: 5.4},
+              {},
+              {},
+              {},
+            ],
+            [//signature
+              { text: `ลายมือชื่อ .............................................. ผู้สมัคร`, colSpan: 4, style: 'primary', lineHeight: 1.1  },
+              {},
+              {},
+              {},
+            ],
+            [
+              { text: `(${fullPatientName})`, colSpan: 4, style: 'primary' },
+              {},
+              {},
+              {},
+            ],
+            [
+              { text: `ลายมือชื่อ ................................................... เจ้าหน้าที่ผู้รับคำขอ`, colSpan: 4, style: 'primary', lineHeight: 1.1, margin: [50,0,0,0] },
+              {},
+              {},
+              {},
+            ],
+            [
+              { text: `(นางสาเจ้าหน้าที่ ทดสอบ)`, colSpan: 4, style: 'primary', lineHeight: 1.1 },
+              {},
+              {},
+              {},
+            ],
+            [
+              { text: `เจ้าหน้าที่อำเภอ`, colSpan: 4, style: 'primary', lineHeight: 1.1 },
+              {},
+              {},
+              {},
+            ],
+          ]
+        },
+        //layout: 'noBorders'
+      },
+
+
+
+
+      const validateIDCard = (id) => {
+  if (!id || id.length !== 13) return false;
+  let sum = 0;
+  for (let i = 0; i < 12; i++) {
+    sum += parseFloat(id.charAt(i)) * (13 - i);
+  }
+  return (11 - (sum % 11)) % 10 === parseFloat(id.charAt(12));
+};
+
+export const validations = {
+
+  required: (msg = "กรุณากรอกข้อมูล") => [
+    (v) => !!v || msg
+  ],
+  minLength: (min, msg) => [
+    (v) => (v && v.length >= min) || msg || `ต้องมีความยาวอย่างน้อย ${min} ตัวอักษร`
+  ],
+  email: [
+    (v) => !!v || "กรุณากรอกอีเมล",
+    (v) => /.+@.+\..+/.test(v) || "รูปแบบอีเมลไม่ถูกต้อง"
+  ],
+  numberOnly: v => /^[0-9]+$/.test(v) || 'กรอกได้เฉพาะตัวเลขเท่านั้น',
+  phone: v => /^0[0-9]{8,9}$/.test(v) || 'รูปแบบเบอร์โทรศัพท์ไม่ถูกต้อง (เช่น 0812345678)',
+  idCard: v => (v && v.length === 13) || 'ต้องกรอกให้ครบ 13 หลัก',
+  idCardChecksum: v => validateIDCard(v) || 'false format',
+};

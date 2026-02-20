@@ -21,6 +21,7 @@ declare module 'vue-router/auto-routes' {
     '/EditUser': RouteRecordInfo<'/EditUser', '/EditUser', Record<never, never>, Record<never, never>>,
     '/Home': RouteRecordInfo<'/Home', '/Home', Record<never, never>, Record<never, never>>,
     '/Login': RouteRecordInfo<'/Login', '/Login', Record<never, never>, Record<never, never>>,
+    '/PDFmaker': RouteRecordInfo<'/PDFmaker', '/PDFmaker', Record<never, never>, Record<never, never>>,
     '/Register': RouteRecordInfo<'/Register', '/Register', Record<never, never>, Record<never, never>>,
     '/Test': RouteRecordInfo<'/Test', '/Test', Record<never, never>, Record<never, never>>,
   }
@@ -46,6 +47,10 @@ declare module 'vue-router/auto-routes' {
     }
     'src/pages/Login.vue': {
       routes: '/Login'
+      views: never
+    }
+    'src/pages/PDFmaker.vue': {
+      routes: '/PDFmaker'
       views: never
     }
     'src/pages/Register.vue': {

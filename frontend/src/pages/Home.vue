@@ -29,6 +29,8 @@ onMounted(() => {
     <v-container>
       <h1>หน้าแรก</h1>
       <UserTable :userData="users" :isLoading="loading" />
+      <br>
+      <v-btn color="primary" @click="getAllUsers">Refresh</v-btn>
     </v-container>
   </DefaultLayout>
 </template>

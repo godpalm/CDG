@@ -12,10 +12,13 @@ const handleLogin = async () => {
   const { valid } = await form.value.validate();
   if (!valid) return;
   
+  try{
   const response = await userService.login(loginData.value);
   localStorage.setItem("token", response.data.access_token);
-
   router.push("/home");
+  } catch(error) {
+    console.log(error);
+  }
 };
 </script>
 
